@@ -18,3 +18,12 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity}x{self.product.name}"
+    
+
+class UserSession(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    refresh_token = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Session for {self.user.username}"
